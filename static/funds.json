@@ -1,0 +1,39 @@
+{
+  "000355": {
+    "code": "000355",
+    "shortName": "南方丰元A",
+    "riskLevel": "中低风险",
+    "fundType": "债券型",
+    "netValue": 1.2894,
+    "performance": {
+      "triMonthIncrease": "+2.07%",
+      "oneYearIncrease": "+5.44%",
+      "triYearIncrease": "+19.91%",
+      "oneYearVolatility": "1.48%",
+      "oneYearSharp": "3.89",
+      "oneYeardrawdown": "-1.30%"
+    },
+    "informations": {
+      "fullName": "南方丰元信用增强债券型证券投资基金",
+      "foundTime": "2013-11-12",
+      "valueScale": "79.26亿元",
+      "fundManager": {
+        "name": "杜才超",
+        "employSD": "2016-12-09",
+        "employDays": "4年245天",
+        "totalReturn": "280.94亿元",
+        "termReturn": "22.93%"
+      },
+      "fundCompany": {
+        "name": "南方基金管理股份有限公司",
+        "fundManagedWorth": "10171.14亿元",
+        "fundManagedNum": "424"
+      }
+    },
+    "hold": {
+      "bond": 95.02,
+      "deposit": 0.95,
+      "other": 4.03
+    }
+  }
+}

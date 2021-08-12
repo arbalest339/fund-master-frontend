@@ -1,0 +1,132 @@
+[
+  {
+    "type": "text",
+    "initFlag": true,
+    "content": { "text": "主人好，我是您的选基小助手~" },
+    "user": {
+      "avatar": "//gw.alicdn.com/tfs/TB1DYHLwMHqK1RjSZFEXXcGMXXa-56-62.svg"
+    }
+  },
+  {
+    "type": "text",
+    "initFlag": true,
+    "content": { "text": "基金太多挑不过来？ 让我来帮您吧！" },
+    "user": {
+      "avatar": "//gw.alicdn.com/tfs/TB1DYHLwMHqK1RjSZFEXXcGMXXa-56-62.svg"
+    }
+  },
+  {
+    "type": "text",
+    "initFlag": true,
+    "content": { "text": "首先请问您一个问题，您要选择哪种投资方式呢？" },
+    "user": {
+      "avatar": "//gw.alicdn.com/tfs/TB1DYHLwMHqK1RjSZFEXXcGMXXa-56-62.svg"
+    }
+  },
+  {
+    "type": "choice",
+    "initFlag": true,
+    "lastFlag": false,
+    "position": "right",
+    "content": {
+      "choices": [
+        { "key": "A", "value": "我只想安稳地享受收益" },
+        { "key": "B", "value": "我可以承担一些风险来提高收益" },
+        { "key": "C", "value": "我希望尽可能追求高收益" }
+      ]
+    }
+  },
+  {
+    "type": "text",
+    "initFlag": false,
+    "content": { "text": "那么您的这笔钱预计要投资多长时间呢？" },
+    "user": {
+      "avatar": "//gw.alicdn.com/tfs/TB1DYHLwMHqK1RjSZFEXXcGMXXa-56-62.svg"
+    }
+  },
+  {
+    "type": "choice",
+    "initFlag": false,
+    "lastFlag": false,
+    "position": "right",
+    "content": {
+      "choices": [
+        { "key": "A", "value": "我希望能灵活赎回" },
+        { "key": "B", "value": "6个月以内" },
+        { "key": "C", "value": "半年到1年" },
+        { "key": "D", "value": "1年到3年" },
+        { "key": "E", "value": "3年以上" }
+      ]
+    }
+  },
+  {
+    "type": "text",
+    "initFlag": false,
+    "content": {
+      "text": "投资总是伴随这风险，请问您能够接受的本金最大损失是？"
+    },
+    "user": {
+      "avatar": "//gw.alicdn.com/tfs/TB1DYHLwMHqK1RjSZFEXXcGMXXa-56-62.svg"
+    }
+  },
+  {
+    "type": "choice",
+    "initFlag": false,
+    "lastFlag": true,
+    "position": "right",
+    "content": {
+      "choices": [
+        { "key": "A", "value": "我不能接受本金的损失" },
+        { "key": "B", "value": "10%以内" },
+        { "key": "C", "value": "10%到30%" },
+        { "key": "D", "value": "30%以上" }
+      ]
+    }
+  },
+  {
+    "type": "text",
+    "content": {
+      "text": "好的主人，我已经了解了您的需求了，正在为您筛选理财产品中..."
+    },
+    "user": {
+      "avatar": "//gw.alicdn.com/tfs/TB1DYHLwMHqK1RjSZFEXXcGMXXa-56-62.svg"
+    }
+  },
+  {
+    "type": "text",
+    "content": { "text": "以下基金是我专门为您精选的好基，快来看看吧" },
+    "user": {
+      "avatar": "//gw.alicdn.com/tfs/TB1DYHLwMHqK1RjSZFEXXcGMXXa-56-62.svg"
+    }
+  },
+  {
+    "type": "fundList",
+    "content": {
+      "fund": {
+        "key": "000355",
+        "name": "南方丰元信用增强债",
+        "triYearIncrease": 6.17,
+        "morningStar": 5,
+        "desc": "历史业绩远超同类水平"
+      }
+    },
+    "user": {
+      "avatar": "//gw.alicdn.com/tfs/TB1DYHLwMHqK1RjSZFEXXcGMXXa-56-62.svg"
+    }
+  },
+  {
+    "type": "fundList",
+    "content": {
+      "fund": {
+        "key": "400030",
+        "name": "东方添益债券",
+        "triYearIncrease": 5.43,
+        "morningStar": 4,
+        "desc": "成立以来稳定增值"
+      }
+    },
+    "user": {
+      "avatar": "//gw.alicdn.com/tfs/TB1DYHLwMHqK1RjSZFEXXcGMXXa-56-62.svg"
+    }
+  }
+]
