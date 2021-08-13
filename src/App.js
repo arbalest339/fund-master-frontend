@@ -13,7 +13,7 @@ import { StarTwoTone } from "@ant-design/icons";
 import "@chatui/core/dist/index.css";
 import "./App.css";
 
-var dialogue = require("../static/dialogue.json"); // forward slashes will depend on the file location
+var dialogue = require("./static/dialogue.json"); // forward slashes will depend on the file location
 var initialMessages = [];
 var dlgIdx = 0;
 
