@@ -106,8 +106,9 @@ export default function App() {
   }
 
   function handleDetailClick(item, key) {
-    console.log(key);
+    console.log(open);
     setOpen(true);
+    console.log(open);
   }
 
   function handleClosePopup(item) {
@@ -186,14 +187,15 @@ export default function App() {
   }
 
   return (
-    <Chat
-      navbar={{ title: "智能助理" }}
-      messages={messages}
-      renderMessageContent={renderMessageContent}
-      quickReplies={defaultQuickReplies}
-      onQuickReplyClick={handleQuickReplyClick}
-      onSend={handleSend}
-    >
+    <div>
+      <Chat
+        navbar={{ title: "智能助理" }}
+        messages={messages}
+        renderMessageContent={renderMessageContent}
+        quickReplies={defaultQuickReplies}
+        onQuickReplyClick={handleQuickReplyClick}
+        onSend={handleSend}
+      />
       <Popup active={open} title="标题" onClose={handleClosePopup}>
         <div style={{ padding: "0px 15px" }}>
           <p style={{ padding: "10px" }}>
@@ -204,6 +206,7 @@ export default function App() {
           </p>
         </div>
       </Popup>
-    </Chat>
+    </div>
+    
   );
 }
