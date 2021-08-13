@@ -207,6 +207,5 @@ export default function App() {
         </div>
       </Popup>
     </div>
-    
   );
 }
