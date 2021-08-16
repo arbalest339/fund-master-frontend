@@ -6,34 +6,103 @@
     "fundType": "债券型",
     "netValue": 1.2894,
     "performance": {
-      "triMonthIncrease": "+2.07%",
-      "oneYearIncrease": "+5.44%",
-      "triYearIncrease": "+19.91%",
-      "oneYearVolatility": "1.48%",
-      "oneYearSharp": "3.89",
-      "oneYeardrawdown": "-1.30%"
+      "return": [
+        {
+          "key": "triMonth",
+          "time": "近3个月",
+          "thisReturn": "+2.03%",
+          "avgReturn": "+1.29%"
+        },
+        {
+          "key": "sixMonth",
+          "time": "近6个月",
+          "thisReturn": "+4.19%",
+          "avgReturn": "+2.25%"
+        },
+        {
+          "key": "oneYear",
+          "time": "近1年",
+          "thisReturn": "+5.43%",
+          "avgReturn": "+3.22%"
+        },
+        {
+          "key": "triYear",
+          "time": "近3年",
+          "thisReturn": "+20.03%",
+          "avgReturn": "+13.29%"
+        }
+      ],
+      "other": [
+        {
+          "desc": "近一年波动率",
+          "value": "1.48%",
+          "intro": "波动率是金融资产价格的波动程度，是对资产收益率不确定性的衡量，用于反映金融资产的风险水平。波动率越高，金融资产价格的波动越剧烈，资产收益率的不确定性就越强；波动率越低，金融资产价格的波动越平缓，资产收益率的确定性就越强。"
+        },
+        {
+          "desc": "近一年夏普比率",
+          "value": "3.89",
+          "intro": "夏普比率反映了单位风险基金净值增长率超过无风险收益率的程度。如果夏普比率为正值，说明在衡量期内基金的平均净值增长率超过了无风险利率。"
+        },
+        {
+          "desc": "近一年最大回撤",
+          "value": "-1.30%",
+          "intro": "最大回撤率是指在选定周期内(近一年内)任一历史时点往后推，产品净值走到最低点时的收益率回撤幅度的最大值。最大回撤用来描述买入产品后可能出现的最糟糕的情况。"
+        }
+      ]
     },
     "informations": {
-      "fullName": "南方丰元信用增强债券型证券投资基金",
-      "foundTime": "2013-11-12",
-      "valueScale": "79.26亿元",
-      "fundManager": {
-        "name": "杜才超",
-        "employSD": "2016-12-09",
-        "employDays": "4年245天",
-        "totalReturn": "280.94亿元",
-        "termReturn": "22.93%"
-      },
-      "fundCompany": {
-        "name": "南方基金管理股份有限公司",
-        "fundManagedWorth": "10171.14亿元",
-        "fundManagedNum": "424"
-      }
+      "introduction": [
+        { "desc": "基金全称", "value": "南方丰元信用增强债券型证券投资基金" },
+        { "desc": "成立日期", "value": "2013-11-12" },
+        { "desc": "资产规模", "value": "79.26亿元(2021-06-30)" },
+        { "desc": "基金管理人", "value": "南方基金" },
+        { "desc": "基金托理人", "value": "工商银行" }
+      ],
+      "fundManager": [
+        { "desc": "杜才超", "value": "从业4年248天，管理规模280.94亿元" },
+        { "desc": "本基金任期", "value": "2016-12-09~至今" },
+        { "desc": "任职回报", "value": "+22.93%" }
+      ],
+      "fundCompany": [
+        "南方基金管理股份有限公司",
+        { "desc": "管理资产规模", "value": "10171.14亿元" },
+        { "desc": "管理基金", "value": "424支" }
+      ]
     },
     "hold": {
-      "bond": 95.02,
-      "deposit": 0.95,
-      "other": 4.03
+      "title": {
+        "text": "投资分布",
+        "x": "center"
+      },
+      "tooltip": {
+        "trigger": "item",
+        "formatter": "{a} <br/>{b} : {c} ({d}%)"
+      },
+      "legend": {
+        "orient": "vertical",
+        "left": "left",
+        "data": ["债券", "银行存款及清算备付金", "其它"]
+      },
+      "series": [
+        {
+          "name": "持仓占比",
+          "type": "pie",
+          "radius": "55%",
+          "center": ["50%", "60%"],
+          "data": [
+            { "value": 95.02, "name": "债券" },
+            { "value": 0.95, "name": "银行存款及清算备付金" },
+            { "value": 4.03, "name": "其它" }
+          ],
+          "itemStyle": {
+            "emphasis": {
+              "shadowBlur": 10,
+              "shadowOffsetX": 0,
+              "shadowColor": "rgba(0, 0, 0, 0.5)"
+            }
+          }
+        }
+      ]
     }
   }
 }

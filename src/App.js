@@ -1,19 +1,26 @@
 import React, { useState } from "react";
-import { Descriptions } from "antd";
+import { Descriptions, Table, Popover } from "antd";
 import Chat, {
   Text,
+  Tabs,
+  Tab,
+  Tag,
   Bubble,
   Button,
+  Icon,
   Popup,
   List,
   ListItem,
   useMessages
 } from "@chatui/core";
-import { StarTwoTone } from "@ant-design/icons";
+import { StarTwoTone, QuestionCircleOutlined } from "@ant-design/icons";
+import ReactECharts from "echarts-for-react";
 import "@chatui/core/dist/index.css";
+import "antd/dist/antd.css";
 import "./App.css";
 
-var dialogue = require("./static/dialogue.json"); // forward slashes will depend on the file location
+const dialogue = require("./static/dialogue.json"); // forward slashes will depend on the file location
+const fundsInfo = require("./static/funds.json");
 var initialMessages = [];
 var dlgIdx = 0;
 
@@ -23,8 +30,10 @@ for (dlgIdx = 0; dlgIdx < dialogue.length; dlgIdx++) {
   } else break;
 }
 
+// const { Header, Footer, Sider, Content } = Layout;
+
 // 默认快捷短语，可选
-const defaultQuickReplies = [
+var defaultQuickReplies = [
   {
     icon: "message",
     name: "联系人工服务",
@@ -48,10 +57,14 @@ const defaultQuickReplies = [
   }
 ];
 
+var fundDetail = fundsInfo["000355"];
+
 export default function App() {
   // 消息列表
   const { messages, appendMsg, setTyping } = useMessages(initialMessages);
   const [open, setOpen] = useState(false);
+  const [tabIndex, setTabIndex] = useState(0);
+  const { Column } = Table;
 
   // 发送回调
   function handleSend(type, val) {
@@ -106,13 +119,17 @@ export default function App() {
   }
 
   function handleDetailClick(item, key) {
-    console.log(open);
+    console.log(fundsInfo[key].performance.return);
+    fundDetail = fundsInfo[key];
     setOpen(true);
-    console.log(open);
   }
 
   function handleClosePopup(item) {
     setOpen(false);
+  }
+
+  function handleTabChange(i) {
+    setTabIndex(i);
   }
 
   function renderMessageContent(msg) {
@@ -158,26 +175,49 @@ export default function App() {
         var stars = [];
         for (let i = 0; i < fund.morningStar; i++) {
           stars.push(
-            <StarTwoTone key={i} fontSize="1px" twoToneColor="gold" />
+            // <StarFilled key={i} width="2em" height="2em" color="gold" />
+            <StarTwoTone
+              key={i}
+              style={{ fontSize: "200%" }}
+              twoToneColor="gold"
+            />
           );
         }
 
         return (
           <Bubble key={fund.key}>
-            <Descriptions title={fund.key + " " + fund.name} layout="vertical">
-              {/* {fund.desc} */}
-              <Descriptions.Item label="三年年化">
-                <Text style={{ color: "red" }}>{fund.triYearIncrease} %</Text>
-              </Descriptions.Item>
-              <Descriptions.Item label="晨星评级">{stars}</Descriptions.Item>
-            </Descriptions>
-            <Text>{fund.desc}</Text>
-            <Button
-              color="primary"
-              onClick={(e) => handleDetailClick(e, fund.key)}
+            <b style={{ fontSize: "20px" }}>
+              {fund.key + " " + fund.name}
+              <div style={{ float: "right" }}>
+                <Tag>京选好基</Tag>
+              </div>
+            </b>
+            <br />
+            <Descriptions
+              layout="vertical"
+              style={{ width: "400px" }}
+              column={{ md: 2 }}
             >
-              查看详情
-            </Button>
+              <Descriptions.Item
+                label={<p className="weak">三年年化</p>}
+                contentStyle={{ color: "red", fontSize: "30px" }}
+              >
+                {fund.triYearIncrease} %
+              </Descriptions.Item>
+              <Descriptions.Item label={<p className="weak">晨星评级</p>}>
+                {stars}
+              </Descriptions.Item>
+            </Descriptions>
+            <div style={{ display: "flex" }}>
+              <p style={{ fontSize: "17px" }}>{fund.desc}</p>
+              <Button
+                color="primary"
+                onClick={(e) => handleDetailClick(e, fund.key)}
+                style={{ marginLeft: "auto" }}
+              >
+                查看详情
+              </Button>
+            </div>
           </Bubble>
         );
 
@@ -187,7 +227,7 @@ export default function App() {
   }
 
   return (
-    <div>
+    <>
       <Chat
         navbar={{ title: "智能助理" }}
         messages={messages}
@@ -196,16 +236,232 @@ export default function App() {
         onQuickReplyClick={handleQuickReplyClick}
         onSend={handleSend}
       />
-      <Popup active={open} title="标题" onClose={handleClosePopup}>
-        <div style={{ padding: "0px 15px" }}>
-          <p style={{ padding: "10px" }}>
-            内容详情内容详情内容详情内容详情内容详情内容详情
-          </p>
-          <p style={{ padding: "10px" }}>
-            内容详情内容详情内容详情内容详情内容详情
-          </p>
-        </div>
+      {/* 用上拉框实现基金的详情展示 */}
+      <Popup active={open} title="基金详情" onClose={handleClosePopup}>
+        <b className="leftMargin" style={{ fontSize: "20px" }}>
+          {fundDetail.shortName + "(" + fundDetail.code + ")"}
+        </b>
+        <Tag>京选好基</Tag>
+        <Descriptions
+          className="leftMargin"
+          layout="vertical"
+          column={{ md: 2 }}
+        >
+          <Descriptions.Item label={<p className="weak">类型</p>}>
+            <Tag style={{ fontSize: "15px" }}>{fundDetail.riskLevel}</Tag>
+            <Tag style={{ fontSize: "15px" }}>{fundDetail.fundType}</Tag>
+          </Descriptions.Item>
+          <Descriptions.Item
+            label={<p className="weak">最新净值</p>}
+            contentStyle={{ color: "red", fontSize: "30px" }}
+          >
+            <Text style={{ color: "red" }}>{fundDetail.netValue} %</Text>
+          </Descriptions.Item>
+        </Descriptions>
+        <Tabs index={tabIndex} scrollable onChange={handleTabChange}>
+          <Tab label={<p className="weak">业绩</p>}>
+            <b className="leftMargin" style={{ fontSize: "20px" }}>
+              阶段业绩
+            </b>
+            <hr />
+            <Table dataSource={fundDetail.performance.return}>
+              <Column title="时间" dataIndex="time" key="time" />
+              <Column
+                title="本基金收益"
+                dataIndex="thisReturn"
+                key="thisReturn"
+                render={(text) => <Text style={{ color: "red" }}>{text}</Text>}
+              />
+              <Column title="同类平均" dataIndex="avgReturn" key="avgReturn" />
+            </Table>
+            <b className="leftMargin" style={{ fontSize: "20px" }}>
+              特色数据
+            </b>
+            <hr />
+            <Descriptions
+              className="leftMargin"
+              layout="vertical"
+              column={{ md: 3 }}
+            >
+              <Descriptions.Item
+                label={
+                  <div style={{ color: "grey" }}>
+                    {fundDetail.performance.other[0].desc}{" "}
+                    <Popover
+                      content={
+                        <div style={{ width: "200px" }}>
+                          {fundDetail.performance.other[0].intro}
+                        </div>
+                      }
+                      title={fundDetail.performance.other[0].desc}
+                    >
+                      <QuestionCircleOutlined />
+                    </Popover>
+                  </div>
+                }
+                contentStyle={{ color: "red", fontSize: "30px" }}
+              >
+                {fundDetail.performance.other[0].value}
+              </Descriptions.Item>
+              <Descriptions.Item
+                label={
+                  <div style={{ color: "grey" }}>
+                    {fundDetail.performance.other[1].desc}{" "}
+                    <Popover
+                      content={
+                        <div style={{ width: "200px" }}>
+                          {fundDetail.performance.other[1].intro}
+                        </div>
+                      }
+                      title={fundDetail.performance.other[1].desc}
+                    >
+                      <QuestionCircleOutlined />
+                    </Popover>
+                  </div>
+                }
+                contentStyle={{ color: "red", fontSize: "30px" }}
+              >
+                {fundDetail.performance.other[1].value}
+              </Descriptions.Item>
+              <Descriptions.Item
+                label={
+                  <div style={{ color: "grey" }}>
+                    {fundDetail.performance.other[2].desc}{" "}
+                    <Popover
+                      content={
+                        <div style={{ width: "200px" }}>
+                          {fundDetail.performance.other[2].intro}
+                        </div>
+                      }
+                      title={fundDetail.performance.other[2].desc}
+                    >
+                      <QuestionCircleOutlined />
+                    </Popover>
+                  </div>
+                }
+                contentStyle={{ color: "red", fontSize: "30px" }}
+              >
+                {fundDetail.performance.other[2].value}
+              </Descriptions.Item>
+            </Descriptions>
+          </Tab>
+          <Tab label="概况">
+            <b className="leftMargin" style={{ fontSize: "20px" }}>
+              基金介绍
+            </b>
+            <hr />
+            <Descriptions layout="vertical" bordered>
+              <Descriptions.Item
+                label={fundDetail.informations.introduction[0].desc}
+              >
+                <b>{fundDetail.informations.introduction[0].value}</b>
+              </Descriptions.Item>
+              <Descriptions.Item
+                label={fundDetail.informations.introduction[1].desc}
+              >
+                <b>{fundDetail.informations.introduction[1].value}</b>
+              </Descriptions.Item>
+              <Descriptions.Item
+                label={fundDetail.informations.introduction[2].desc}
+              >
+                <b>{fundDetail.informations.introduction[2].value}</b>
+              </Descriptions.Item>
+              <Descriptions.Item
+                label={fundDetail.informations.introduction[3].desc}
+              >
+                <b>{fundDetail.informations.introduction[3].value}</b>
+              </Descriptions.Item>
+              <Descriptions.Item
+                label={fundDetail.informations.introduction[4].desc}
+              >
+                <b>{fundDetail.informations.introduction[4].value}</b>
+              </Descriptions.Item>
+            </Descriptions>
+            <br />
+            <b className="leftMargin" style={{ fontSize: "20px" }}>
+              基金经理
+            </b>
+            <hr />
+            <b className="leftMargin" style={{ fontSize: "18px" }}>
+              {fundDetail.informations.fundManager[0].desc}
+            </b>
+            <div className="leftMargin">
+              {fundDetail.informations.fundManager[0].value}
+            </div>
+            <br />
+            <Descriptions
+              className="leftMargin"
+              layout="vertical"
+              column={{ md: 2 }}
+            >
+              <Descriptions.Item
+                label={
+                  <p className="weak">
+                    {fundDetail.informations.fundManager[1].desc}
+                  </p>
+                }
+                contentStyle={{ fontSize: "20px" }}
+              >
+                {fundDetail.informations.fundManager[1].value}
+              </Descriptions.Item>
+              <Descriptions.Item
+                label={
+                  <p className="weak">
+                    {fundDetail.informations.fundManager[2].desc}
+                  </p>
+                }
+                contentStyle={{ color: "red", fontSize: "30px" }}
+              >
+                {fundDetail.informations.fundManager[2].value}
+              </Descriptions.Item>
+            </Descriptions>
+            <b className="leftMargin" style={{ fontSize: "20px" }}>
+              基金公司
+            </b>
+            <hr />
+            <b className="leftMargin" style={{ fontSize: "18px" }}>
+              {fundDetail.informations.fundCompany[0]}
+            </b>
+            <br />
+            <Descriptions
+              className="leftMargin"
+              layout="vertical"
+              column={{ md: 2 }}
+            >
+              <Descriptions.Item
+                label={
+                  <p className="weak">
+                    {fundDetail.informations.fundCompany[1].desc}
+                  </p>
+                }
+              >
+                {fundDetail.informations.fundCompany[1].value}
+              </Descriptions.Item>
+              <Descriptions.Item
+                label={
+                  <p className="weak">
+                    {fundDetail.informations.fundCompany[2].desc}
+                  </p>
+                }
+              >
+                {fundDetail.informations.fundCompany[2].value}
+              </Descriptions.Item>
+            </Descriptions>
+          </Tab>
+          <Tab label="持仓">
+            <ReactECharts
+              className="leftMargin"
+              option={fundDetail.hold}
+              style={{ height: 200 }}
+              // onChartReady={onChartReady}
+              // onEvents={{
+              //   click: onChartClick,
+              //   legendselectchanged: onChartLegendselectchanged
+              // }}
+            />
+          </Tab>
+        </Tabs>
       </Popup>
-    </div>
+    </>
   );
 }
