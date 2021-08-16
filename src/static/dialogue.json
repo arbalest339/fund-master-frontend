@@ -4,7 +4,7 @@
     "initFlag": true,
     "content": { "text": "主人好，我是您的选基小助手~" },
     "user": {
-      "avatar": "//gw.alicdn.com/tfs/TB1DYHLwMHqK1RjSZFEXXcGMXXa-56-62.svg"
+      "avatar": "http://storage.360buyimg.com/cofe-static/fe-jtalk-client-im-pc/static/web/media/winAvatar3d.fe4ddd9c.png"
     }
   },
   {
@@ -12,7 +12,7 @@
     "initFlag": true,
     "content": { "text": "基金太多挑不过来？ 让我来帮您吧！" },
     "user": {
-      "avatar": "//gw.alicdn.com/tfs/TB1DYHLwMHqK1RjSZFEXXcGMXXa-56-62.svg"
+      "avatar": "http://storage.360buyimg.com/cofe-static/fe-jtalk-client-im-pc/static/web/media/winAvatar3d.fe4ddd9c.png"
     }
   },
   {
@@ -20,7 +20,7 @@
     "initFlag": true,
     "content": { "text": "首先请问您一个问题，您要选择哪种投资方式呢？" },
     "user": {
-      "avatar": "//gw.alicdn.com/tfs/TB1DYHLwMHqK1RjSZFEXXcGMXXa-56-62.svg"
+      "avatar": "http://storage.360buyimg.com/cofe-static/fe-jtalk-client-im-pc/static/web/media/winAvatar3d.fe4ddd9c.png"
     }
   },
   {
@@ -41,7 +41,7 @@
     "initFlag": false,
     "content": { "text": "那么您的这笔钱预计要投资多长时间呢？" },
     "user": {
-      "avatar": "//gw.alicdn.com/tfs/TB1DYHLwMHqK1RjSZFEXXcGMXXa-56-62.svg"
+      "avatar": "http://storage.360buyimg.com/cofe-static/fe-jtalk-client-im-pc/static/web/media/winAvatar3d.fe4ddd9c.png"
     }
   },
   {
@@ -66,7 +66,7 @@
       "text": "投资总是伴随这风险，请问您能够接受的本金最大损失是？"
     },
     "user": {
-      "avatar": "//gw.alicdn.com/tfs/TB1DYHLwMHqK1RjSZFEXXcGMXXa-56-62.svg"
+      "avatar": "http://storage.360buyimg.com/cofe-static/fe-jtalk-client-im-pc/static/web/media/winAvatar3d.fe4ddd9c.png"
     }
   },
   {
@@ -89,14 +89,14 @@
       "text": "好的主人，我已经了解了您的需求了，正在为您筛选理财产品中..."
     },
     "user": {
-      "avatar": "//gw.alicdn.com/tfs/TB1DYHLwMHqK1RjSZFEXXcGMXXa-56-62.svg"
+      "avatar": "http://storage.360buyimg.com/cofe-static/fe-jtalk-client-im-pc/static/web/media/winAvatar3d.fe4ddd9c.png"
     }
   },
   {
     "type": "text",
     "content": { "text": "以下基金是我专门为您精选的好基，快来看看吧" },
     "user": {
-      "avatar": "//gw.alicdn.com/tfs/TB1DYHLwMHqK1RjSZFEXXcGMXXa-56-62.svg"
+      "avatar": "http://storage.360buyimg.com/cofe-static/fe-jtalk-client-im-pc/static/web/media/winAvatar3d.fe4ddd9c.png"
     }
   },
   {
@@ -111,7 +111,7 @@
       }
     },
     "user": {
-      "avatar": "//gw.alicdn.com/tfs/TB1DYHLwMHqK1RjSZFEXXcGMXXa-56-62.svg"
+      "avatar": "http://storage.360buyimg.com/cofe-static/fe-jtalk-client-im-pc/static/web/media/winAvatar3d.fe4ddd9c.png"
     }
   },
   {
@@ -126,7 +126,7 @@
       }
     },
     "user": {
-      "avatar": "//gw.alicdn.com/tfs/TB1DYHLwMHqK1RjSZFEXXcGMXXa-56-62.svg"
+      "avatar": "http://storage.360buyimg.com/cofe-static/fe-jtalk-client-im-pc/static/web/media/winAvatar3d.fe4ddd9c.png"
     }
   }
 ]
